@@ -5,10 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostListItemComponent } from './post-list-item/post-list-item.component';
-
-import { PostService } from './services/post.service';
 import { AuthComponent } from './auth/auth.component';
 import { MainViewComponent } from './main-view/main-view.component';
+
+import { PostService } from './services/post.service';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { MainViewComponent } from './main-view/main-view.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [PostService],
+  providers: [PostService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

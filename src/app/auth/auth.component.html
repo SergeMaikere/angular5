@@ -1,1 +1,4 @@
-<p>auth works!</p>
+<div class="btn-group">
+	<button class="btn btn-success" type="button" (click)="onLogin()" *ngIf="!authStatus">LOGIN</button>
+	<button class="btn btn-warning" type="button" (click)="onLogout()" *ngIf="authStatus">SIGNOUT</button>
+</div>
