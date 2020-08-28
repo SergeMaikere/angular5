@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+//import { CommonModule } from "@angular/common";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { MainViewComponent } from './main-view/main-view.component';
 
 import { PostService } from './services/post.service';
 import { AuthService } from './services/auth.service';
+import { SinglePostComponent } from './single-post/single-post.component';
 
 
 @NgModule({
@@ -18,10 +20,12 @@ import { AuthService } from './services/auth.service';
     PostListComponent,
     PostListItemComponent,
     AuthComponent,
-    MainViewComponent
+    MainViewComponent,
+    SinglePostComponent
   ],
   imports: [
     BrowserModule,
+    //CommonModule,
     AppRoutingModule
   ],
   providers: [PostService, AuthService],

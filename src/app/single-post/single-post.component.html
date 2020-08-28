@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-md-4">
+		<div class="card">
+			<img src="../assets/profilePic.jpg" alt="profile pic" class="img-fluid img-card-top">
+			<div class="body">
+				<div class="card-title"><h4>Luke Cage</h4></div>
+				<div class="card-text">
+					<p>In in laborum commodo dolore do in occaecat magna irure labore dolor eu.</p>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="col-md-8">
+		<div class="card">
+			<div class="card-header">{{post.created_at | date: 'short'}}</div>
+			<div class="card-body">
+				<div class="card-title">
+					<h3>{{post.title}}</h3>
+				</div>
+				<div class="card-text"><p>{{post.content}}</p></div>
+				<div class="card-footer">
+					<button class="btn btn-outline-dark" (click)="goBack()">back</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

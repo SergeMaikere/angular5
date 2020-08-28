@@ -1,10 +1,11 @@
 <ul class="list-group">
 	<app-post-list-item 
-      *ngFor="let post of allPosts; let i = index" 
+      *ngFor="let post of allPosts; index as i" 
       [title]="post.title"
       [content]="post.content"
       [date]="post.created_at"
       [loveIts]="post.loveIts"
+      [id]="post.id"
       [index]="i">
     </app-post-list-item>
 </ul>

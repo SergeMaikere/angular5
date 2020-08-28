@@ -31,8 +31,8 @@ export class AuthComponent implements OnInit {
 
   onLogout () {
   	this.authService.logout()
-	console.log('Goddbye and dont be a stranger');
-	this.authStatus = this.authService.isAuth;
+	  console.log('Goddbye and dont be a stranger');
+	  this.authStatus = this.authService.isAuth;
   }
 
 }
