@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Schoolbell&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+
+h1, h2, h3, h4, li, button, a {
+	font-family: 'Annie Use Your Telescope', cursive;
+}
+
+p { font-family: 'Amatic SC', cursive; }
+
+
+.screen-height { min-height: 100vh; }
+
+.v-center {
+	display: flex;
+	flex-direction: column !important;
+	align-items: center;
+	justify-content: center;
+}
+

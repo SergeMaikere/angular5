@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../services/post.service';
-
+import { Constantes } from '../services/constantes.service';
 
 @Component({
   selector: 'app-main-view',
@@ -9,10 +8,16 @@ import { PostService } from '../services/post.service';
 })
 export class MainViewComponent implements OnInit {
 
-  allPosts: any[];
+  constructor ( private constantes: Constantes ) {  }
 
-  constructor ( private postService: PostService ) {  }
+  loremShort: string;
+  loremMedium: string;
+  loremLong: string;
 
-  ngOnInit() { this.allPosts = this.postService.allPosts }
-
+  ngOnInit() { 
+  	this.loremShort = this.constantes.loremShort;
+  	this.loremMedium = this.constantes.loremMedium;
+  	this.loremLong = this.constantes.loremLong;
+  }
 }
+	

@@ -19,7 +19,7 @@ export class SinglePostComponent implements OnInit {
 
   ngOnInit(): void {
   	const id = this.route.snapshot.params['id'];
-  	this.post = this.postService.getPostById(+id);
+  	this.postService.getPostById(+id).then( data => this.post = data )
   }
 
   goBack () { this.router.navigate(['blog']) }

@@ -1,0 +1,7 @@
+
+export class Constantes {
+
+	loremShort = 'Amet non adipisicing excepteur laborum laborum ut amet officia.';
+	loremMedium = 'Voluptate occaecat ullamco duis irure incididunt ea dolore aute non duis nulla minim cupidatat quis nulla officia tempor dolore pariatur ea aliqua adipisicing ad nulla incididunt in ullamco ullamco exercitation amet sint sint id dolor pariatur ullamco consectetur laborum.';
+	loremLong = 'Do ullamco minim ex et in elit deserunt ut esse pariatur nostrud ea eiusmod deserunt in aute dolor et tempor veniam ut aliquip est do sunt commodo irure irure dolor consectetur occaecat id et aliquip deserunt culpa elit esse id et non consequat in non elit occaecat enim velit minim ut pariatur ex anim amet nostrud proident occaecat aute elit sed et veniam eu eiusmod commodo aute aliqua consectetur ut laborum ut in dolor amet pariatur sit est enim duis ex nulla sed excepteur sed qui elit nisi ad dolore irure dolor labore laborum duis ea voluptate ut culpa minim voluptate ut labore amet sit laboris ea sed velit dolore nulla eu non nulla adipisicing do ut eu nostrud commodo dolor ea fugiat proident ad tempor sed laboris laboris cupidatat voluptate nulla in magna veniam enim consectetur cupidatat aliqua minim esse dolore tempor in est consequat laborum sed mollit non consequat elit in eiusmod duis ut irure sunt consectetur nostrud sed laboris eu officia officia ut quis elit amet officia cupidatat proident quis tempor non esse adipisicing non officia laboris dolor mollit amet exercitation exercitation pariatur do magna.';
+}

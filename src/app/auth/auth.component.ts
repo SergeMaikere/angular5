@@ -19,14 +19,14 @@ export class AuthComponent implements OnInit {
 
   onLogin () {
   	this.authService.login()
-	.then( 
-		() => {
-			console.log('Perfect login');
-			this.authStatus = this.authService.isAuth;
-			this.router.navigate(['blog']);
-		}
-	)
-	.catch( error => console.log(error) )
+  	.then( 
+  		() => {
+  			console.log('Perfect login');
+  			this.authStatus = this.authService.isAuth;
+  			this.router.navigate(['blog']);
+  		}
+  	)
+  	.catch( error => console.log(error) )
   }
 
   onLogout () {
