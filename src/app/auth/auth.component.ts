@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs/observable';
 
 @Component({
   selector: 'app-auth',
@@ -10,29 +10,24 @@ import { AuthService } from '../services/auth.service';
 export class AuthComponent implements OnInit {
 
   authStatus: boolean;
+  knownUser: boolean;
 
-  constructor( private authService: AuthService, private router: Router ) { }
+
+
+  constructor( private authService: AuthService ) { }
 
   ngOnInit(): void {
   	this.authStatus = this.authService.isAuth;
+    this.authService.emitAuthSubjectIsAuth();
+
+    this.knownUser = this.authService.isKnown;
+    this.authService.emitAuthSubjectIsKnown();
   }
 
-  onLogin () {
-  	this.authService.login()
-  	.then( 
-  		() => {
-  			console.log('Perfect login');
-  			this.authStatus = this.authService.isAuth;
-  			this.router.navigate(['blog']);
-  		}
-  	)
-  	.catch( error => console.log(error) )
-  }
-
-  onLogout () {
-  	this.authService.logout()
-	  console.log('Goddbye and dont be a stranger');
-	  this.authStatus = this.authService.isAuth;
+  onGoToSignInForm () { 
+    this.authService.isKnown = true;
+    this.authService.emitAuthSubjectIsKnown();
+    this.knownUser = true;
   }
 
 }

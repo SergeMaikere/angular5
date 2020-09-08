@@ -14,6 +14,9 @@ import { PostService } from './services/post.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { Constantes } from './services/constantes.service';
+import { LoginComponent } from './login/login.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { Constantes } from './services/constantes.service';
     AuthComponent,
     MainViewComponent,
     SinglePostComponent,
-    FourOFourComponent
+    FourOFourComponent,
+    LoginComponent,
+    SignInComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
