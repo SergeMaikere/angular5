@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Constantes } from '../services/constantes.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor( private constantes: Constantes ) { }
+
+  lorem: string;
 
   ngOnInit(): void {
+  	this.lorem = this.constantes.loremLong;
   }
 
 }

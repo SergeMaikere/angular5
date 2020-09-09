@@ -3,6 +3,11 @@
 </div>
 <div class="container-fluid v-center screen-height">
 	<app-login *ngIf="!authStatus && !knownUser"></app-login>
-	<app-sign-in *ngIf="!authStatus && knownUser"></app-sign-in>
+
+	<app-sign-in 
+	*ngIf="!authStatus && knownUser" 
+	(authStatus)="authStatusHandler($event)"
+	(knownUser)="knownUserHandler($event)"></app-sign-in>
+	
 	<app-profile *ngIf="authStatus && knownUser"></app-profile>
 </div>

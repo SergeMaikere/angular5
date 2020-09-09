@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Observable } from 'rxjs/observable';
 
 @Component({
   selector: 'app-auth',
@@ -18,16 +17,16 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
   	this.authStatus = this.authService.isAuth;
-    this.authService.emitAuthSubjectIsAuth();
-
     this.knownUser = this.authService.isKnown;
-    this.authService.emitAuthSubjectIsKnown();
   }
 
   onGoToSignInForm () { 
     this.authService.isKnown = true;
-    this.authService.emitAuthSubjectIsKnown();
     this.knownUser = true;
   }
+
+  authStatusHandler (bool) { this.authStatus = bool; }
+
+  knownUserHandler (bool) { this.knownUser = bool; }
 
 }
