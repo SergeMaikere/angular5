@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -19,8 +20,9 @@ export class LoginComponent implements OnInit {
   	this.knownUser = this.authService.isKnown;
   }
 
-  onLogin () {
-  	this.authService.login()
+  onLogin (form: NgForm) {
+    const loginPayload = { email: form.value['email'], password: form.value['password'] }
+  	this.authService.login(loginPayload)
   	.then( 
   		() => {
   			console.log('Perfect login');

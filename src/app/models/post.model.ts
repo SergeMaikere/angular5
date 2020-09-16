@@ -1,4 +1,5 @@
-module.exports = interface Post {
+export interface Post {
+	id: number,
 	title: string,  
 	content: string,  
 	loveIts: number,  

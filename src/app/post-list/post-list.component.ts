@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import Post from '../models/post.js';
 import { PostService } from '../services/post.service';
 
 
@@ -13,7 +12,7 @@ export class PostListComponent implements OnInit {
   constructor( private postService: PostService) { }
 
 
-  allPosts: Post[];
+  allPosts: any[];
 
   ngOnInit(): void {
   	this.allPosts = this.postService.allPosts;

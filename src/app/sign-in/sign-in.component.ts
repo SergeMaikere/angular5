@@ -1,6 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { User } from '../models/user.model';
+import { AuthService } from '../services/auth.service';
+import { MatchingPasswordError } from '../validators/matchingPasswordError.validator';
 
 
 @Component({
@@ -14,22 +18,51 @@ export class SignInComponent implements OnInit {
 	@Output() authStatus: EventEmitter<boolean> = new EventEmitter();
 	@Output() knownUser: EventEmitter<boolean> = new EventEmitter();
 
-  constructor( private authService: AuthService, private router: Router ) { }
+  userForm: FormGroup;
+
+  constructor( 
+    private authService: AuthService, 
+    private router: Router,
+    private formBuilder: FormBuilder ) { }
 
   ngOnInit(): void {
+    this.initForm()
   }
 
+  initForm () {
+    this.userForm = this.formBuilder.group(
+      {
+        username: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', Validators.required],
+        confirmPassword: ['', Validators.required]
+      },
+      { validator: MatchingPasswordError('password', 'confirmPassword') }
+    )
+  }
+
+  get f () { return this.userForm.controls }
+
   onSignIn () {
-  	this.authService.signin()
-  	.then( 
+
+    const formValue = this.userForm.value;
+    const signinPayload: User = {
+      username: formValue['username'],
+      email: formValue['email'],
+      password: formValue['password']
+    } 
+
+  	this.authService
+    .signin(signinPayload)
+  	.subscribe( 
   		() => {
   			console.log('Perfect sign-in');
   			this.authStatus.emit(this.authService.isAuth);
   			this.knownUser.emit(this.authService.isKnown);
   			this.router.navigate(['blog']);
-  		}
+  		},
+       error => console.log({error})
   	)
-  	.catch( error => console.log(error) )
   }
 
   onGoBack () { 
