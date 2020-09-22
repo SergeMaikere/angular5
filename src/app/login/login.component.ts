@@ -23,18 +23,7 @@ export class LoginComponent implements OnInit {
   onLogin (form: NgForm) {
     const loginPayload = { email: form.value['email'], password: form.value['password'] }
   	this.authService.login(loginPayload)
-  	.then( 
-  		() => {
-  			console.log('Perfect login');
-  			this.router.navigate(['blog']);
-  		}
-  	)
+  	.then( () => this.router.navigate(['blog']) )
   	.catch( error => console.log(error) )
   }
-
-  onLogout () {
-  	this.authService.logout()
-	  console.log('Goddbye and dont be a stranger');
-  }
-
 }

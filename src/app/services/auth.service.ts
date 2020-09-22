@@ -15,34 +15,35 @@ export class AuthService {
 
 	constructor (private httpClient: HttpClient) {}
 
-	signin (signinPayload: User) {
+	async signin (signinPayload: User) {
 		this.httpClient
 		.post('http://localhost:3000/api/auth/signup', signinPayload)
 		.subscribe(
 			() => console.log('Prefect signin'),
-			error => console.log('Error!!! => ' + error)
+			error => console.log('Error!!! => ' + error.message)
 		)
 	}
 
-	login (loginPayload: LoginPayload) {
-		return new Promise(
-			(resolve, reject) => {
-				setTimeout(
-					() => {
-						this.isAuth = true;
-						this.isKnown = true;
-						resolve(true);
-					},
-					2000
-				)
-			}
+	async login (loginPayload: LoginPayload) {
+		this.httpClient
+		.post('http://localhost:3000/api/auth/login', loginPayload)
+		.subscribe(
+			data => {
+				localStorage.setItem('userToken', data.token);
+				this.isAuth = true;
+				this.isKnown = true;
+			},
+			error => console.log({error})
 		)
 	}
 
-	logout () { this.isAuth = false; }
+	logout () {
+		localStorage.removeItem('userToken');
+		this.isAuth = false; 
+		this.isKnown = false;
+	}
 
 	updateUser (form) {
 		return new Promise( (resolve, reject) => setTimeout(() => resolve(true), 2000) )
 	}
-
 }

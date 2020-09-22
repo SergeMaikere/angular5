@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Constantes } from '../services/constantes.service';
 import { AuthService } from '../services/auth.service';
 
@@ -10,7 +11,10 @@ import { AuthService } from '../services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor( private constantes: Constantes, private authService: AuthService ) { }
+  constructor( 
+    private constantes: Constantes, 
+    private authService: AuthService,
+    private router: Router ) { }
 
   lorem: string;
 
@@ -20,5 +24,10 @@ export class ProfileComponent implements OnInit {
 
   onSave (form: NgForm) {  
   	this.authService.updateUser(form).then( () => console.log('perfect update'));
+  }
+
+   onLogout () {
+    this.authService.logout()
+    this.router.navigate(['/'])
   }
 }

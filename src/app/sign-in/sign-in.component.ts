@@ -52,17 +52,19 @@ export class SignInComponent implements OnInit {
       password: formValue['password']
     } 
 
-  	this.authService
-    .signin(signinPayload)
-  	.subscribe( 
+  	this.authService.signin(signinPayload)
+  	.then( 
   		() => {
-  			console.log('Perfect sign-in');
+        this.authService.isKnown = false;
+
   			this.authStatus.emit(this.authService.isAuth);
   			this.knownUser.emit(this.authService.isKnown);
-  			this.router.navigate(['blog']);
-  		},
-       error => console.log({error})
+
+
+  			this.router.navigate(['auth']);
+  		}
   	)
+  	.catch( error => console.log(error) )
   }
 
   onGoBack () { 
