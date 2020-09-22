@@ -1,5 +1,5 @@
 <h2 class="text-center">All there is about happiness</h2>
-<ul class="list-group">
+<div class="card-columns">
 	<app-post-list-item 
       *ngFor="let post of allPosts; index as i" 
       [title]="post.title"
@@ -9,4 +9,4 @@
       [id]="post.id"
       [index]="i">
     </app-post-list-item>
-</ul>
+</div>

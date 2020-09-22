@@ -5,6 +5,7 @@
 
 h1, h2, h3, h4, li, button, a {
 	font-family: 'Annie Use Your Telescope', cursive;
+	color: #860F0F !important;
 }
 
 p, label { font-family: 'Amatic SC', cursive; }
@@ -19,3 +20,23 @@ p, label { font-family: 'Amatic SC', cursive; }
 	justify-content: center;
 }
 
+.bg-first { background-color: #000000; }
+.bg-second { background-color: #434343; }
+.bg-third { background-color: #848484; }
+.bg-fourth { background-color: #E8E8E8; }
+.bg-fifth { background-color: #860F0F; }
+
+
+.color-first { color-color: #000000; }
+.color-second { color-color: #434343; }
+.color-third { color-color: #848484; }
+.color-fourth { color-color: #E8E8E8; }
+.color-fifth { color-color: #860F0F; }
+
+.border-first { border-color: #000000; }
+.border-second { border-color: #434343; }
+.border-third { border-color: #848484; }
+.border-fourth { border-color: #E8E8E8; }
+.border-fifth { border-color: #860F0F; }
+
+// #403C37,#7D887F,#C19F77,#D9E0C3,#F4EFC0,#403C37

@@ -15,7 +15,6 @@ import { MatchingPasswordError } from '../validators/matchingPasswordError.valid
 
 export class SignInComponent implements OnInit {
 
-	@Output() authStatus: EventEmitter<boolean> = new EventEmitter();
 	@Output() knownUser: EventEmitter<boolean> = new EventEmitter();
 
   userForm: FormGroup;
@@ -56,11 +55,7 @@ export class SignInComponent implements OnInit {
   	.then( 
   		() => {
         this.authService.isKnown = false;
-
-  			this.authStatus.emit(this.authService.isAuth);
   			this.knownUser.emit(this.authService.isKnown);
-
-
   			this.router.navigate(['auth']);
   		}
   	)

@@ -1,31 +1,30 @@
-<li class="list-group-item text-left">
-	<div [ngClass]="{
+
+<div [ngClass]="{
 	'card': true,
-	'border-success': loveIts > 0,
-	'border-danger': loveIts < 0}">
-		<div class="card-body">
+	'border-fifth': loveIts < 0}">
+
+	<div class="card-header">
+		<span class="font-weight-light">{{date | date: 'short'}}</span>
+		<button class="btn btn-outline-light" type="button">
+			<a [routerLink]="[id]">Show Detail</a>
+		</button>
+	</div>
+
+	<div class="card-body">
 		<div class="card-title"><h3>{{title}}</h3></div>
-			<div class="row">
-				<div class="col-md-9">
-					<div class="card-text"><p>{{content}}</p></div>
-				</div>
-				<div class="col-md-3">
-					<p class="font-weight-light">{{date | date: 'short'}}</p>
-					<button class="btn btn-outline-dark" type="button">
-						<a [routerLink]="[id]">Detail</a>
-					</button>
-				</div>
-			</div>
+		<div class="card-text"><p>{{content}}</p></div>
+	</div>
+
+	<div class="card-footer">
+		<div class="button-group">
+			<button (click)="onLike()" type="button" class="btn btn-outline-dark border-second">
+				Love It  <span *ngIf="loveIts > 0" class="badge badge-light">{{loveIts}}</span>
+			</button>
+			<button (click)="onDislike()" type="button" class="btn btn-outline-dark border-fifth">
+				Hate It  <span *ngIf="loveIts < 0" class="badge badge-light">{{loveIts}}</span>
+			</button>
 		</div>
-		<div class="footer">
-			<div class="button-group">
-				<button (click)="onLike()" type="button" class="btn btn-success">
-					Love It  <span *ngIf="loveIts > 0" class="badge badge-light">{{loveIts}}</span>
-				</button>
-				<button (click)="onDislike()" type="button" class="btn btn-danger">
-					Fuck It  <span *ngIf="loveIts < 0" class="badge badge-light">{{loveIts}}</span>
-				</button>
-			</div>
-		</div>
-	</div>		
-</li>
+	</div>
+
+</div>		
+

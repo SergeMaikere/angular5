@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { LoginPayload } from '../models/loginPayload.model';
+import { Login, Token } from '../models/login.model';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -24,12 +24,12 @@ export class AuthService {
 		)
 	}
 
-	async login (loginPayload: LoginPayload) {
+	async login (login: Login) {
 		this.httpClient
-		.post('http://localhost:3000/api/auth/login', loginPayload)
+		.post('http://localhost:3000/api/auth/login', login)
 		.subscribe(
-			data => {
-				localStorage.setItem('userToken', data.token);
+			(data: Token) => {
+				if (data) localStorage.setItem('userToken', data.token );
 				this.isAuth = true;
 				this.isKnown = true;
 			},

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,10 +8,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class AuthComponent implements OnInit {
 
-  authStatus: boolean;
   knownUser: boolean;
-
-
+  authStatus: boolean;
+  @Output() logged: EventEmitter<boolean> = new EventEmitter();
 
   constructor( private authService: AuthService ) { }
 
@@ -25,7 +24,10 @@ export class AuthComponent implements OnInit {
     this.knownUser = true;
   }
 
-  authStatusHandler (bool) { this.authStatus = bool; }
+  authStatusHandler (bool) { 
+    this.authStatus = bool; 
+    this.logged.emit(bool);
+  }
 
   knownUserHandler (bool) { this.knownUser = bool; }
 

@@ -1,12 +1,13 @@
 <div class="text-right" *ngIf="!authStatus && !knownUser">
-	<button type="button" class="btn btn-outline-warning" (click)="onGoToSignInForm()" >SIGN IN</button>
+	<button type="button" class="btn btn-outline-dark" (click)="onGoToSignInForm()" >SIGN IN</button>
 </div>
 <div class="container-fluid v-center screen-height">
-	<app-login *ngIf="!authStatus && !knownUser"></app-login>
+	<app-login 
+	*ngIf="!authStatus && !knownUser"
+	(authStatus)="authStatusHandler($event)"></app-login>
 
 	<app-sign-in 
 	*ngIf="!authStatus && knownUser" 
-	(authStatus)="authStatusHandler($event)"
 	(knownUser)="knownUserHandler($event)"></app-sign-in>
 	
 	<app-profile *ngIf="authStatus && knownUser"></app-profile>

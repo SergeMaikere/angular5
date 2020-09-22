@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Constantes } from '../services/constantes.service';
@@ -17,9 +17,16 @@ export class ProfileComponent implements OnInit {
     private router: Router ) { }
 
   lorem: string;
+  @Output() authStatus: EventEmitter<boolean> = new EventEmitter()
 
   ngOnInit(): void {
   	this.lorem = this.constantes.loremLong;
+  }
+
+  ngAfterViewChecked(): void {
+    console.log('WAAAAAAAAAAAAAAAAA')
+    console.log(this.authService.isAuth)
+    this.authStatus.emit(this.authService.isAuth);
   }
 
   onSave (form: NgForm) {  

@@ -8,5 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export class AppComponent {
   title = 'My Cool App';
+  authStatus: boolean;
+
+  authStatusHandler(bool) {
+  	this.authStatus = bool;
+  }
   
 }
