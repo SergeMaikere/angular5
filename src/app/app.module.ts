@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +11,9 @@ import { AuthComponent } from './auth/auth.component';
 import { MainViewComponent } from './main-view/main-view.component';
 import { SinglePostComponent } from './single-post/single-post.component';
 import { FourOFourComponent } from './four-o-four/four-o-four.component';
+import { LoginComponent } from './login/login.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { ProfileComponent } from './profile/profile.component';
 
 import { PostService } from './services/post.service';
 import { AuthService } from './services/auth.service';
@@ -24,10 +29,16 @@ import { Constantes } from './services/constantes.service';
     AuthComponent,
     MainViewComponent,
     SinglePostComponent,
-    FourOFourComponent
+    FourOFourComponent,
+    LoginComponent,
+    SignInComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [

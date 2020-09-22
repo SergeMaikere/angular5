@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { Post } from '../models/post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -67,7 +68,7 @@ export class PostService {
 				setTimeout( 
 					()=> {
 						this.emitPostSubject();
-						resolve(this.allPosts.find( post => post.id === id));
+						resolve(this.allPosts.find( (post : Post) => post.id === id));
 					}
 					, 2000 
 				)

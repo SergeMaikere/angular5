@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { LoginPayload } from '../models/loginPayload.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,21 +11,39 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 	
 	isAuth: boolean;
+	isKnown = false;
 
-	login () {
-		return new Promise(
-			(resolve, reject) => {
-				setTimeout(
-					() => {
-						this.isAuth = true;
-						resolve(true);
-					},
-					2000
-				)
-			}
+	constructor (private httpClient: HttpClient) {}
+
+	async signin (signinPayload: User) {
+		this.httpClient
+		.post('http://localhost:3000/api/auth/signup', signinPayload)
+		.subscribe(
+			() => console.log('Prefect signin'),
+			error => console.log('Error!!! => ' + error.message)
 		)
 	}
 
-	logout () { this.isAuth = false }
+	async login (loginPayload: LoginPayload) {
+		this.httpClient
+		.post('http://localhost:3000/api/auth/login', loginPayload)
+		.subscribe(
+			data => {
+				localStorage.setItem('userToken', data.token);
+				this.isAuth = true;
+				this.isKnown = true;
+			},
+			error => console.log({error})
+		)
+	}
 
+	logout () {
+		localStorage.removeItem('userToken');
+		this.isAuth = false; 
+		this.isKnown = false;
+	}
+
+	updateUser (form) {
+		return new Promise( (resolve, reject) => setTimeout(() => resolve(true), 2000) )
+	}
 }
